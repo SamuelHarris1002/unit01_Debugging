@@ -32,7 +32,24 @@ var acresBox = document.forms[0].acres;
 
 /* verify acres text box entry is a positive number */
 function verifyAcres() {
-   testFormCompleteness();      
+   try {
+      for (var i = 0; i < 5000; i++) {
+          if (acresFieldset.getElementsByTagName("input")[i].checked) {
+              acresComplete = true;
+              messageElement.innerHTML = "";
+              testFormCompleteness();
+              i = 5001;
+          }
+      }
+      if (i === 5000) {
+          throw "Please add acres.";
+                   }
+      }
+      catch(message) {
+         acresComplete = false;
+         messageHeadElement.innerHTML = "";
+         messageElement.innerHTML = message;
+     }    
 }
 
 /* verify at least one crops checkbox is checked */
@@ -40,7 +57,7 @@ function verifyCrops() {
    try {
       for (var i = 0; i < 7; i++) {
           if (cropsFieldset.getElementsByTagName("input")[i].checked) {
-              cropscomplete = true;
+              cropsComplete = true;
               messageElement.innerHTML = "";
               testFormCompleteness();
               i = 8;
@@ -60,12 +77,46 @@ function verifyCrops() {
 
 /* verify months text box entry is between 1 and 12 */
 function verifyMonths() {
-   testFormCompleteness();
+   try {
+      for (var i = 0; i < 12; i++) {
+          if (monthsFieldset.getElementsByTagName("input")[i].checked) {
+              monthsComplete = true;
+              messageElement.innerHTML = "";
+              testFormCompleteness();
+              i = 13;
+          }
+      }
+      if (i === 12) {
+          throw "Please add months";
+                   }
+      }
+      catch(message) {
+         monthsComplete = false;
+         messageHeadElement.innerHTML = "";
+         messageElement.innerHTML = message;
+     }    
 }
 
 /* verify that a fuel option button is selected */
 function verifyFuel() {
-   testFormCompleteness();
+   try {
+      for (var i = 0; i < 3; i++) {
+          if (fuelFieldset.getElementsByTagName("input")[i].checked) {
+              fuelComplete = true;
+              messageElement.innerHTML = "";
+              testFormCompleteness();
+              i = 4;
+          }
+      }
+      if (i === 3) {
+          throw "Please select a fuel";
+                   }
+      }
+      catch(message) {
+         fuelComplete = false;
+         messageHeadElement.innerHTML = "";
+         messageElement.innerHTML = message;
+     }    
 }
 
 /* check if all four form sections are completed */
