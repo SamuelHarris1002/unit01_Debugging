@@ -123,6 +123,8 @@ function verifyFuel() {
 function testFormCompleteness() {
    if (acresComplete && cropsComplete && monthsComplete && fuelComplete) {
       createRecommendation();
+   }else{
+      alert("it didnt work");
    }
 }
 
